@@ -176,7 +176,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-28 20:07:35" itemprop="dateModified" datetime="2022-03-28T20:07:35+08:00">2022-03-28</time>
+                <time title="Modified: 2022-03-28 20:12:51" itemprop="dateModified" datetime="2022-03-28T20:12:51+08:00">2022-03-28</time>
               </span>
 
           
@@ -191,7 +191,7 @@
 
       
           <h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><h2 id="接口规范"><a href="#接口规范" class="headerlink" title="接口规范"></a>接口规范</h2><h3 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h3><p>每一个提供数据的业务系统都可以视为数据的”生产者”，每一个需求数据的业务系统也可以视为数据的”消费者”。连接”消费者”与”生产者”之间的即为API网关。API网关将统一对外提供接口的认证，授权，限流，熔断等通用功能，并以代理的方式转发经过API网关授权的请求。典型的 API 网关架构如图所示：<br><img src="https://s3.bmp.ovh/imgs/2022/03/466edaa108d15c91.png"><br>接口平台将基于集成的数据提供各类基础数据接口，是整个架构体系下最大的数据“生产者”。于此同时，我们也欢迎其他各类业务与接口平台进行接口集成，提供各类更贴近业务，尤其是提供互操作性的集成接口，进一步丰富平台的开放生态。</p>
-<h3 id="数据响应结构"><a href="#数据响应结构" class="headerlink" title="数据响应结构"></a>数据响应结构</h3><p>鉴于我们基于API网关统一进行认证，授权，限量等策略，实际业务接口则以代理方式请求业务后端API。因此返回的数据响应结构取决于后端服务返回的响应结构体。我们建议后端接口侧统一使用以下的响应结构风格：</p>
+<h3 id="数据响应结构"><a href="#数据响应结构" class="headerlink" title="数据响应结构"></a>数据响应结构</h3><p>鉴于我们基于API网关统一进行认证，授权，限量等策略，实际业务接口则以代理方式请求业务后端API。因此返回的数据响应结构取决于后端服务返回的响应结构体。我们建议后端接口侧统一使用以下的响应结构风格</p>
 <table>
 <tr>
     <th>参数名</th>
@@ -214,9 +214,10 @@
     <th>代码详细信息，“成功”表示正确</th>
 </tr>
 </table>
+
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;code&quot;</span>: <span class="string">&quot;A00000&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;成功&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: [</span><br><span class="line"></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-### 错误响应结构
-<table>
+
+<h3 id="错误响应结构"><a href="#错误响应结构" class="headerlink" title="错误响应结构"></a>错误响应结构</h3><table>
 <tr>
     <th>错误代码</th>
     <th>含义</th>
@@ -224,35 +225,21 @@
 <tr>
     <th>500 </th>
     <th>内部错误 </th>
+    
 </tr>
 <tr>
     <th>401 </th>
     <th>鉴权失败 </th>
-    
 </tr>
 <tr>
     <th>402 </th>
     <th>token过期或者无权限访问 </th>
-    
 </tr>
 </table>
-### 协议与接口
-开放平台遵顼OAuth2标准协议，并基于此模式授权并提供RESTFUL风格的接口,RESTFUL相关文档参考：http://restful.p2hp.com/。
-除本文档公开的接口列表，和授权协议之外，我们也支持其他协议的接入和接口的定制。如有此类定制需求，请单独联系我们。接口设计规范如下：
-a)单条查询类和批量filter类的用GET，修改类的用POST和PUT，批量查询类入参涉及到数组用POST
-b)接口命名中无动词：get，search等单词都不要出现，接口命名中只允许出现资源的路径和名称。如果返回批量结果用xxxs的名字,用复数来表示list,用No来表示number。
-c)url中不要出现大写字母
-d)使用下划线命名法
-e)参数使用哪种命名规则待定
-## 身份认证(待建设)
-## 授权模型
-### 授权码模式（Authorization code）
-待定
-### 客户端模式（client credentials）
-描述：OAuth2 客户端模式进行授权
-请求方法：POST
-请求地址：http://api.tongji.edu.cn/v1/token
-请求参数：
+
+<h3 id="协议与接口"><a href="#协议与接口" class="headerlink" title="协议与接口"></a>协议与接口</h3><p>开放平台遵顼OAuth2标准协议，并基于此模式授权并提供RESTFUL风格的接口,RESTFUL相关文档参考：<a target="_blank" rel="noopener" href="http://restful.p2hp.com/%E3%80%82">http://restful.p2hp.com/。</a><br>除本文档公开的接口列表，和授权协议之外，我们也支持其他协议的接入和接口的定制。如有此类定制需求，请单独联系我们。接口设计规范如下：<br>a)单条查询类和批量filter类的用GET，修改类的用POST和PUT，批量查询类入参涉及到数组用POST<br>b)接口命名中无动词：get，search等单词都不要出现，接口命名中只允许出现资源的路径和名称。如果返回批量结果用xxxs的名字,用复数来表示list,用No来表示number。<br>c)url中不要出现大写字母<br>d)使用下划线命名法<br>e)参数使用哪种命名规则待定</p>
+<h2 id="身份认证-待建设"><a href="#身份认证-待建设" class="headerlink" title="身份认证(待建设)"></a>身份认证(待建设)</h2><h2 id="授权模型"><a href="#授权模型" class="headerlink" title="授权模型"></a>授权模型</h2><h3 id="授权码模式（Authorization-code）"><a href="#授权码模式（Authorization-code）" class="headerlink" title="授权码模式（Authorization code）"></a>授权码模式（Authorization code）</h3><p>待定</p>
+<h3 id="客户端模式（client-credentials）"><a href="#客户端模式（client-credentials）" class="headerlink" title="客户端模式（client credentials）"></a>客户端模式（client credentials）</h3><p>描述：OAuth2 客户端模式进行授权<br>请求方法：POST<br>请求地址：<a target="_blank" rel="noopener" href="http://api.tongji.edu.cn/v1/token">http://api.tongji.edu.cn/v1/token</a><br>请求参数：</p>
 <table>
 <tr>
     <th>参数名</th>
@@ -305,98 +292,20 @@ e)参数使用哪种命名规则待定
 </table>
 响应示例：
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">&quot;access_token&quot;</span>:<span class="string">&quot;eyJhbGciOiJSUzI1NiIsInR5cC&quot;</span>,<span class="attr">&quot;expires_in&quot;</span>:<span class="number">36000</span>,<span class="attr">&quot;not-before-policy&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;refresh_expires_in&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;scope&quot;</span>:<span class="string">&quot;campus_activities_campus_move campus_activities&quot;</span>,<span class="attr">&quot;token_type&quot;</span>:<span class="string">&quot;Bearer&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
-### 资源拥有密码模式（Resource Owner Password Credentials）
-待定
-### 使用令牌调用接口
-除了元数据字典接口，或者接口有特殊说明以外，所有接口的调用均需要携带所申请的令牌，即access_token才可调用成功。在接口——支持的模式中，我们列出了接口所支持的授权模式，请使用该接口所支持的模式来申请access_token。
-使用 access_token 调用数据时，可以采用以下两种形式皆可：
-**HTTP Header携带token**
-放在 HTTP Header 的 Authorization 中，增加 Bearer为前缀。
-**以 URL 参数形式携带 token**
-放在 URL 中以 query string 参数形式携带，开发调试时会更方便。
-### 令牌有效期说明
-access_token 有效期为36000秒。client credentials 模式下可以允许同时申请多个 access_token。请求 access_token 的接口有速率限制，请在应用侧缓存 access_token，不要频繁的申请，否则可能会被临时性封禁。
-尽管非常罕见，但在特殊情况下平台可能会吊销尚处于有效期内的 access_token。应用侧应该实现 access_token 失效时重新申请的策略。可以根据返回的错误代码判断，当代码为402时表示access_token过期或者无权限访问。此时应用应当尝试重新申请token。
-### 刷新令牌
-待定
-## 限流策略
-### 流控算法
-开放平台采用令牌桶算法对请求进行流量控制。
-**默认策略**
-默认情况下，对于每个接口的限流策略为：300次/每分钟/每应用
-如果存在特殊需求希望提高限流策略，请与我们单独联系。
-部分接口有自己的单独的限流策略，详见接口文档内的备注说明。
-**匿名接口**
-对于允许匿名访问的接口，在匿名访问时，限流策略为：100次/每小时/每IP
-如果希望以更高的频率访问接口，请申请开发者账号，通过授权后访问。
-### IP限制
-开放平台仅对校园网IP地址开放服务，默认情况下我们不再额外对接口的请求的IP地址进行限制。
-如果希望添加IP限制策略加强安全，请与我们单独联系。
-## 隐私政策模板
-**xxxx系统 隐私政策**
-本版发布日期：202x年01月01日
-生效日期：202x年01月01日
-### 概述
-欢迎您访问我们的产品。xxx系统（包括网站等产品提供的服务，以下简称“产品和服务”）是由 xxxx公司 （以下简称“我们”）开发，由xxxx部门运营的。 确保用户的数据安全和隐私保护是我们的首要任务， 本隐私政策载明了您访问和使用我们的产品和服务时所收集的数据及其处理方式。
-请您在继续使用我们的产品前务必认真仔细阅读并确认充分理解本隐私政策全部规则和要点， 一旦您选择使用，即视为您同意本隐私政策的全部内容，同意我们按其收集和使用您的相关信息。 如您在在阅读过程中，对本政策有任何疑问， 请通过 xxx@tongji.edu.cn(请替换为系统运营方的服务邮箱) 与我们取得联系。 如您不同意相关协议或其中的任何条款的，您应停止使用我们的产品和服务。
-本隐私政策帮助您了解以下内容：
-一、我们如何收集和使用您的个人信息；
-二、我们如何存储和保护您的个人信息；
-三、我们如何共享、转让、公开披露您的个人信息；
-四、我们如何使用 Cookie 和其他追踪技术；
-**一、我们如何收集和使用您的个人信息**
-在您使用统一身份认证系统以下各项业务功能（以下简称“服务”）的过程中，我们需要收集您的一些信息，用以向您提供服务、提升我们的服务质量、保障您的账户安全以及符合国家法律法规及监管规定：
-校内授权 在您使用本服务时，您需要使用学校的统一身份认证系统进行登录。在此过程中，我们会自动从统一身份认证平台获取您的基本身份信息，包括xxxx等。如果您不提供这些信息，或者没有账号，则您将无法继续使用产品的相关服务功能
-业务采集 在您使用本服务时，由于业务需要，我们将采集您的xxxx信息。如果您不提供这些信息，则您将无法xxx相关服务功能，但其他功能服务则不受影响。
-其他。请您理解，我们向您提供的服务是不断更新和发展的。如您选择使用了前述说明当中尚未涵盖的其他服务，基于该服务我们需要收集您的信息的，我们会通过页面提示、交互流程、协议约定的方式另行向您说明信息收集的范围与目的，并征得您的同意。我们会按照本政策以及相应的用户协议约定使用、对外提供及保护您的信息；如您选择不提供前述信息，您可能无法使用某项或某部分服务，但不影响您使用我们提供的其他服务。
-**二、我们如何存储和保护您的个人信息**
-我们非常重视个人信息安全，并采取一切合理可行的措施，保护您的个人信息：
-我们承诺使用符合业界标准的安全防护措施保护您提供的个人信息，并加密其中的关键数据， 防止其遭到未经授权访问、公开披露、使用、修改、损坏或丢失。
-如果您对我们的个人信息保护有任何疑问，请通过 xxx@tongji.edu.cn(请替换为系统运营方的服务邮箱) 与我们取得联系。
-您的个人信息与在本系统中产生的服务记录，我们将采取保存xx年。如个人主动提出注销或运营方停止运营，则所有记录将根据国家相关法规删除。
-我们在中华人民共和国境内运营中收集和产生的数据将按照法律法规和国家标准规定存储于中国境内，不会向境外转移。
-**三、我们如何共享、转让、公开披露您的个人信息**
-在管理我们的日常业务活动所需要时，为追求合法利益以更好地服务客户， 我们将合规且恰当的使用您的个人信息。出于对业务和各个方面的综合考虑， 我们仅自身使用这些数据，不与任何第三方分享。
-我们可能会根据法律法规规定，或按政府主管部门的强制性要求，对外共享您的个人信息。 在符合法律法规的前提下，当我们收到上述披露信息的请求时，我们会要求必须出具与之相应的法律文件，如传票或调查函。 我们坚信，对于要求我们提供的信息，应该在法律允许的范围内尽可能保持透明。 在以下情形中，共享、转让、公开披露您的个人信息无需事先征得您的授权同意：
-与履行法律法规及行业主管部门规定的义务相关的；
-与国家安全、国防安全直接相关的；
-与公共安全、公共卫生、重大公共利益直接相关的；
-与犯罪侦查、起诉、审判和判决执行等直接相关的；
-出于维护您或其他个人的生命、财产等重大合法权益但又很难得到您本人同意的；
-您自行向社会公众公开的个人信息；
-从合法公开披露的信息中收集的个人信息，例如：合法的新闻报道、政府信息公开等渠道。
-**四、我们如何使用 Cookie 和其他追踪技术**
-为使您获得更轻松的访问体验，您使用统一身份认证系统时，我们可能会通过小型数据文件识别您的身份，这么做可帮您省去重复系统登录的步骤，或者帮助判断您的账户安全状态。这些数据文件可能是Cookie，FlashCookie，您的浏览器或关联应用程序提供的其他本地存储（以下简称“Cookie”）。请您理解，我们的某些服务只能通过使用Cookie才可得到实现。如您的浏览器或浏览器附加服务允许，您可以修改对Cookie的接受程度或者拒绝统一身份认证系统的Cookie。多数浏览器工具条中的“帮助”部分会告诉您怎样防止您的浏览器接受新的Cookie，怎样让您的浏览器在您收到一条新Cookie时通知您或者怎样彻底关闭Cookie。此外，您可以通过改变浏览器附加程序的设置，或通过访问提供商的网页，来关闭或删除浏览器附加程序使用的FlashCookie及类似数据。但这一举动在某些情况下可能会影响您安全访问统一身份认证系统所提供的服务。
-## 接口URL规范
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/&#123;&#123;版本号&#125;&#125;/&#123;&#123;数据来源&#125;&#125;/&#123;&#123;第一层目录&#125;&#125;/&#123;&#123;第二层目录&#125;&#125;</span><br></pre></td></tr></table></figure>
-**版本号**
-v1 版本1
-v2 版本2
-**数据来源**
-dc datacenter 数仓
-rt realtime 实时
-sp special 特殊
-exp experiment 实验性质接口
-metadata 标准数据/元数据
-# 接口
-## 疫情防控
-### 上海市大数据局核酸采样接口
-**描述**
-通过身份证号查师生的核酸采样状态
-**支持的模式**
-client_credentials
-**请求方法**
-GET
-**请求地址**
-大苏打
-**请求参数**
-的撒
-**返回参数**
-撒旦
-**请求示例**
-萨达
-**返回示例**
-实打实
+
+<h3 id="资源拥有密码模式（Resource-Owner-Password-Credentials）"><a href="#资源拥有密码模式（Resource-Owner-Password-Credentials）" class="headerlink" title="资源拥有密码模式（Resource Owner Password Credentials）"></a>资源拥有密码模式（Resource Owner Password Credentials）</h3><p>待定</p>
+<h3 id="使用令牌调用接口"><a href="#使用令牌调用接口" class="headerlink" title="使用令牌调用接口"></a>使用令牌调用接口</h3><p>除了元数据字典接口，或者接口有特殊说明以外，所有接口的调用均需要携带所申请的令牌，即access_token才可调用成功。在接口——支持的模式中，我们列出了接口所支持的授权模式，请使用该接口所支持的模式来申请access_token。<br>使用 access_token 调用数据时，可以采用以下两种形式皆可：<br><strong>HTTP Header携带token</strong><br>放在 HTTP Header 的 Authorization 中，增加 Bearer为前缀。<br><strong>以 URL 参数形式携带 token</strong><br>放在 URL 中以 query string 参数形式携带，开发调试时会更方便。</p>
+<h3 id="令牌有效期说明"><a href="#令牌有效期说明" class="headerlink" title="令牌有效期说明"></a>令牌有效期说明</h3><p>access_token 有效期为36000秒。client credentials 模式下可以允许同时申请多个 access_token。请求 access_token 的接口有速率限制，请在应用侧缓存 access_token，不要频繁的申请，否则可能会被临时性封禁。<br>尽管非常罕见，但在特殊情况下平台可能会吊销尚处于有效期内的 access_token。应用侧应该实现 access_token 失效时重新申请的策略。可以根据返回的错误代码判断，当代码为402时表示access_token过期或者无权限访问。此时应用应当尝试重新申请token。</p>
+<h3 id="刷新令牌"><a href="#刷新令牌" class="headerlink" title="刷新令牌"></a>刷新令牌</h3><p>待定</p>
+<h2 id="限流策略"><a href="#限流策略" class="headerlink" title="限流策略"></a>限流策略</h2><h3 id="流控算法"><a href="#流控算法" class="headerlink" title="流控算法"></a>流控算法</h3><p>开放平台采用令牌桶算法对请求进行流量控制。</p>
+<p><strong>默认策略</strong><br>默认情况下，对于每个接口的限流策略为：300次/每分钟/每应用<br>如果存在特殊需求希望提高限流策略，请与我们单独联系。<br>部分接口有自己的单独的限流策略，详见接口文档内的备注说明。<br><strong>匿名接口</strong><br>对于允许匿名访问的接口，在匿名访问时，限流策略为：100次/每小时/每IP<br>如果希望以更高的频率访问接口，请申请开发者账号，通过授权后访问。</p>
+<h3 id="IP限制"><a href="#IP限制" class="headerlink" title="IP限制"></a>IP限制</h3><p>开放平台仅对校园网IP地址开放服务，默认情况下我们不再额外对接口的请求的IP地址进行限制。<br>如果希望添加IP限制策略加强安全，请与我们单独联系。</p>
+<h2 id="隐私政策模板"><a href="#隐私政策模板" class="headerlink" title="隐私政策模板"></a>隐私政策模板</h2><p><strong>xxxx系统 隐私政策</strong><br>本版发布日期：202x年01月01日<br>生效日期：202x年01月01日</p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>欢迎您访问我们的产品。xxx系统 （包括网站等产品提供的服务，以下简称“产品和服务”）是由 xxxx公司 （以下简称“我们”）开发，由xxxx部门运营的。 确保用户的数据安全和隐私保护是我们的首要任务， 本隐私政策载明了您访问和使用我们的产品和服务时所收集的数据及其处理方式。<br>请您在继续使用我们的产品前务必认真仔细阅读并确认充分理解本隐私政策全部规则和要点， 一旦您选择使用，即视为您同意本隐私政策的全部内容，同意我们按其收集和使用您的相关信息。 如您在在阅读过程中，对本政策有任何疑问， 请通过 <a href="mailto:&#x78;&#120;&#x78;&#x40;&#x74;&#x6f;&#110;&#103;&#106;&#x69;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;">&#x78;&#120;&#x78;&#x40;&#x74;&#x6f;&#110;&#103;&#106;&#x69;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;</a>(请替换为系统运营方的服务邮箱) 与我们取得联系。 如您不同意相关协议或其中的任何条款的，您应停止使用我们的产品和服务。<br>本隐私政策帮助您了解以下内容：<br>一、我们如何收集和使用您的个人信息；<br>二、我们如何存储和保护您的个人信息；<br>三、我们如何共享、转让、公开披露您的个人信息；<br>四、我们如何使用 Cookie 和其他追踪技术；<br><strong>一、我们如何收集和使用您的个人信息</strong><br>在您使用统一身份认证系统以下各项业务功能（以下简称“服务”）的过程中，我们需要收集您的一些信息，用以向您提供服务、提升我们的服务质量、保障您的账户安全以及符合国家法律法规及监管规定：<br>校内授权 在您使用本服务时，您需要使用学校的统一身份认证系统进行登录。在此过程中，我们会自动从统一身份认证平台获取您的基本身份信息，包括xxxx等。如果您不提供这些信息，或者没有账号，则您将无法继续使用产品的相关服务功能<br>业务采集 在您使用本服务时，由于业务需要，我们将采集您的xxxx信息。如果您不提供这些信息，则您将无法xxx相关服务功能，但其他功能服务则不受影响。<br>其他。请您理解，我们向您提供的服务是不断更新和发展的。如您选择使用了前述说明当中尚未涵盖的其他服务，基于该服务我们需要收集您的信息的，我们会通过页面提示、交互流程、协议约定的方式另行向您说明信息收集的范围与目的，并征得您的同意。我们会按照本政策以及相应的用户协议约定使用、对外提供及保护您的信息；如您选择不提供前述信息，您可能无法使用某项或某部分服务，但不影响您使用我们提供的其他服务。<br><strong>二、我们如何存储和保护您的个人信息</strong><br>我们非常重视个人信息安全，并采取一切合理可行的措施，保护您的个人信息：<br>我们承诺使用符合业界标准的安全防护措施保护您提供的个人信息，并加密其中的关键数据， 防止其遭到未经授权访问、公开披露、使用、修改、损坏或丢失。<br>如果您对我们的个人信息保护有任何疑问，请通过 <a href="mailto:&#x78;&#x78;&#x78;&#64;&#116;&#111;&#x6e;&#103;&#106;&#105;&#46;&#x65;&#100;&#117;&#46;&#x63;&#x6e;">&#x78;&#x78;&#x78;&#64;&#116;&#111;&#x6e;&#103;&#106;&#105;&#46;&#x65;&#100;&#117;&#46;&#x63;&#x6e;</a>(请替换为系统运营方的服务邮箱) 与我们取得联系。<br>您的个人信息与在本系统中产生的服务记录，我们将采取保存xx年。如个人主动提出注销或运营方停止运营，则所有记录将根据国家相关法规删除。<br>我们在中华人民共和国境内运营中收集和产生的数据将按照法律法规和国家标准规定存储于中国境内，不会向境外转移。<br><strong>三、我们如何共享、转让、公开披露您的个人信息</strong><br>在管理我们的日常业务活动所需要时，为追求合法利益以更好地服务客户， 我们将合规且恰当的使用您的个人信息。出于对业务和各个方面的综合考虑， 我们仅自身使用这些数据，不与任何第三方分享。<br>我们可能会根据法律法规规定，或按政府主管部门的强制性要求，对外共享您的个人信息。 在符合法律法规的前提下，当我们收到上述披露信息的请求时，我们会要求必须出具与之相应的法律文件，如传票或调查函。 我们坚信，对于要求我们提供的信息，应该在法律允许的范围内尽可能保持透明。 在以下情形中，共享、转让、公开披露您的个人信息无需事先征得您的授权同意：<br>与履行法律法规及行业主管部门规定的义务相关的；<br>与国家安全、国防安全直接相关的；<br>与公共安全、公共卫生、重大公共利益直接相关的；<br>与犯罪侦查、起诉、审判和判决执行等直接相关的；<br>出于维护您或其他个人的生命、财产等重大合法权益但又很难得到您本人同意的；<br>您自行向社会公众公开的个人信息；<br>从合法公开披露的信息中收集的个人信息，例如：合法的新闻报道、政府信息公开等渠道。<br><strong>四、我们如何使用 Cookie 和其他追踪技术</strong><br>为使您获得更轻松的访问体验，您使用统一身份认证系统时，我们可能会通过小型数据文件识别您的身份，这么做可帮您省去重复系统登录的步骤，或者帮助判断您的账户安全状态。这些数据文件可能是Cookie，FlashCookie，您的浏览器或关联应用程序提供的其他本地存储（以下简称“Cookie”）。请您理解，我们的某些服务只能通过使用Cookie才可得到实现。如您的浏览器或浏览器附加服务允许，您可以修改对Cookie的接受程度或者拒绝统一身份认证系统的Cookie。多数浏览器工具条中的“帮助”部分会告诉您怎样防止您的浏览器接受新的Cookie，怎样让您的浏览器在您收到一条新Cookie时通知您或者怎样彻底关闭Cookie。此外，您可以通过改变浏览器附加程序的设置，或通过访问提供商的网页，来关闭或删除浏览器附加程序使用的FlashCookie及类似数据。但这一举动在某些情况下可能会影响您安全访问统一身份认证系统所提供的服务。</p>
+<h2 id="接口URL规范"><a href="#接口URL规范" class="headerlink" title="接口URL规范"></a>接口URL规范</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/&#123;&#123;版本号&#125;&#125;/&#123;&#123;数据来源&#125;&#125;/&#123;&#123;第一层目录&#125;&#125;/&#123;&#123;第二层目录&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>版本号</strong><br>v1 版本1<br>v2 版本2<br><strong>数据来源</strong><br>dc datacenter 数仓<br>rt realtime 实时<br>sp special 特殊<br>exp experiment 实验性质接口<br>metadata 标准数据/元数据</p>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h2 id="疫情防控"><a href="#疫情防控" class="headerlink" title="疫情防控"></a>疫情防控</h2><h3 id="上海市大数据局核酸采样接口"><a href="#上海市大数据局核酸采样接口" class="headerlink" title="上海市大数据局核酸采样接口"></a>上海市大数据局核酸采样接口</h3><p><strong>描述</strong><br>通过身份证号查师生的核酸采样状态<br><strong>支持的模式</strong><br>client_credentials<br><strong>请求方法</strong><br>GET<br><strong>请求地址</strong><br>大苏打<br><strong>请求参数</strong><br>的撒<br><strong>返回参数</strong><br>撒旦<br><strong>请求示例</strong><br>萨达<br><strong>返回示例</strong><br>实打实</p>
+
       
     </div>
 
