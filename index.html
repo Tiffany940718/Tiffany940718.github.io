@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta property="og:type" content="website">
@@ -159,7 +159,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/22/first-article/" class="post-title-link" itemprop="url">架构</a>
+            <a href="/2021/12/22/first-article/" class="post-title-link" itemprop="url">同济大学开发者平台</a>
         </h2>
 
         <div class="post-meta">
@@ -176,7 +176,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-28 16:19:15" itemprop="dateModified" datetime="2022-03-28T16:19:15+08:00">2022-03-28</time>
+                <time title="Modified: 2022-03-28 17:45:58" itemprop="dateModified" datetime="2022-03-28T17:45:58+08:00">2022-03-28</time>
               </span>
 
           
@@ -190,8 +190,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="接口规范"><a href="#接口规范" class="headerlink" title="接口规范"></a>接口规范</h1><h2 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h2><p>每一个提供数据的业务系统都可以视为数据的”生产者”，每一个需求数据的业务系统也可以视为数据的”消费者”。连接”消费者”与”生产者”之间的即为API网关。API网关将统一对外提供接口的认证，授权，限流，熔断等通用功能，并以代理的方式转发经过API网关授权的请求。典型的 API 网关架构如图所示：<br><img src="https://s3.bmp.ovh/imgs/2022/03/466edaa108d15c91.png"><br>接口平台将基于集成的数据提供各类基础数据接口，是整个架构体系下最大的数据“生产者”。于此同时，我们也欢迎其他各类业务与接口平台进行接口集成，提供各类更贴近业务，尤其是提供互操作性的集成接口，进一步丰富平台的开放生态。</p>
-<h2 id="数据响应结构"><a href="#数据响应结构" class="headerlink" title="数据响应结构"></a>数据响应结构</h2><p>鉴于我们基于API网关统一进行认证，授权，限量等策略，实际业务接口则以代理方式请求业务后端API。因此返回的数据响应结构取决于后端服务返回的响应结构体。我们建议后端接口侧统一使用以下的响应结构风格</p>
+          <h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><h2 id="接口规范"><a href="#接口规范" class="headerlink" title="接口规范"></a>接口规范</h2><h3 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h3><p>每一个提供数据的业务系统都可以视为数据的”生产者”，每一个需求数据的业务系统也可以视为数据的”消费者”。连接”消费者”与”生产者”之间的即为API网关。API网关将统一对外提供接口的认证，授权，限流，熔断等通用功能，并以代理的方式转发经过API网关授权的请求。典型的 API 网关架构如图所示：<br><img src="https://s3.bmp.ovh/imgs/2022/03/466edaa108d15c91.png"><br>接口平台将基于集成的数据提供各类基础数据接口，是整个架构体系下最大的数据“生产者”。于此同时，我们也欢迎其他各类业务与接口平台进行接口集成，提供各类更贴近业务，尤其是提供互操作性的集成接口，进一步丰富平台的开放生态。</p>
+<h3 id="数据响应结构"><a href="#数据响应结构" class="headerlink" title="数据响应结构"></a>数据响应结构</h3><p>鉴于我们基于API网关统一进行认证，授权，限量等策略，实际业务接口则以代理方式请求业务后端API。因此返回的数据响应结构取决于后端服务返回的响应结构体。我们建议后端接口侧统一使用以下的响应结构风格</p>
 <table>
 <tr>
     <th>参数名</th>
@@ -221,7 +221,7 @@
 
 
 
-<h2 id="错误响应结构"><a href="#错误响应结构" class="headerlink" title="错误响应结构"></a>错误响应结构</h2><h2 id="协议与接口"><a href="#协议与接口" class="headerlink" title="协议与接口"></a>协议与接口</h2>
+<h3 id="错误响应结构"><a href="#错误响应结构" class="headerlink" title="错误响应结构"></a>错误响应结构</h3><h3 id="协议与接口"><a href="#协议与接口" class="headerlink" title="协议与接口"></a>协议与接口</h3><h2 id="身份认证"><a href="#身份认证" class="headerlink" title="身份认证"></a>身份认证</h2><h3 id="OCID认证协议"><a href="#OCID认证协议" class="headerlink" title="OCID认证协议"></a>OCID认证协议</h3><h3 id="身份令牌"><a href="#身份令牌" class="headerlink" title="身份令牌"></a>身份令牌</h3><h3 id="认证流程"><a href="#认证流程" class="headerlink" title="认证流程"></a>认证流程</h3><h3 id="会话与用户授权管理"><a href="#会话与用户授权管理" class="headerlink" title="会话与用户授权管理"></a>会话与用户授权管理</h3><h2 id="授权模型"><a href="#授权模型" class="headerlink" title="授权模型"></a>授权模型</h2><h3 id="授权码模式（Authorization-code）"><a href="#授权码模式（Authorization-code）" class="headerlink" title="授权码模式（Authorization code）"></a>授权码模式（Authorization code）</h3><h3 id="客户端模式（client-credentials）"><a href="#客户端模式（client-credentials）" class="headerlink" title="客户端模式（client credentials）"></a>客户端模式（client credentials）</h3><h3 id="资源拥有密码模式（Resource-Owner-Password-Credentials）"><a href="#资源拥有密码模式（Resource-Owner-Password-Credentials）" class="headerlink" title="资源拥有密码模式（Resource Owner Password Credentials）"></a>资源拥有密码模式（Resource Owner Password Credentials）</h3><h3 id="使用令牌调用接口"><a href="#使用令牌调用接口" class="headerlink" title="使用令牌调用接口"></a>使用令牌调用接口</h3><h3 id="令牌有效期说明"><a href="#令牌有效期说明" class="headerlink" title="令牌有效期说明"></a>令牌有效期说明</h3><h3 id="刷新令牌"><a href="#刷新令牌" class="headerlink" title="刷新令牌"></a>刷新令牌</h3><h2 id="限流策略"><a href="#限流策略" class="headerlink" title="限流策略"></a>限流策略</h2><h3 id="流控算法"><a href="#流控算法" class="headerlink" title="流控算法"></a>流控算法</h3><h3 id="IP限制"><a href="#IP限制" class="headerlink" title="IP限制"></a>IP限制</h3><h2 id="隐私政策模板"><a href="#隐私政策模板" class="headerlink" title="隐私政策模板"></a>隐私政策模板</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h2 id="疫情防控"><a href="#疫情防控" class="headerlink" title="疫情防控"></a>疫情防控</h2><h3 id="大数据局核酸采样接口"><a href="#大数据局核酸采样接口" class="headerlink" title="大数据局核酸采样接口"></a>大数据局核酸采样接口</h3>
       
     </div>
 
@@ -254,7 +254,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/22/hello-world/" class="post-title-link" itemprop="url">身份认证</a>
+            <a href="/2021/12/22/hello-world/" class="post-title-link" itemprop="url">hello</a>
         </h2>
 
         <div class="post-meta">
@@ -271,7 +271,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-28 16:19:56" itemprop="dateModified" datetime="2022-03-28T16:19:56+08:00">2022-03-28</time>
+                <time title="Modified: 2022-03-28 17:45:04" itemprop="dateModified" datetime="2022-03-28T17:45:04+08:00">2022-03-28</time>
               </span>
 
           
@@ -298,7 +298,7 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a><br>副书记地方地方都是附件反倒是军方决定是否</p>
-<h2 id="身份认证"><a href="#身份认证" class="headerlink" title="身份认证"></a>身份认证</h2><h3 id="OCID认证协议"><a href="#OCID认证协议" class="headerlink" title="OCID认证协议"></a>OCID认证协议</h3><h3 id="身份令牌"><a href="#身份令牌" class="headerlink" title="身份令牌"></a>身份令牌</h3><h3 id="认证流程"><a href="#认证流程" class="headerlink" title="认证流程"></a>认证流程</h3><h3 id="会话与用户授权管理"><a href="#会话与用户授权管理" class="headerlink" title="会话与用户授权管理"></a>会话与用户授权管理</h3><h2 id="授权模型"><a href="#授权模型" class="headerlink" title="授权模型"></a>授权模型</h2><h3 id="授权码模式（Authorization-code）"><a href="#授权码模式（Authorization-code）" class="headerlink" title="授权码模式（Authorization code）"></a>授权码模式（Authorization code）</h3><h3 id="客户端模式（client-credentials）"><a href="#客户端模式（client-credentials）" class="headerlink" title="客户端模式（client credentials）"></a>客户端模式（client credentials）</h3><h3 id="资源拥有密码模式（Resource-Owner-Password-Credentials）"><a href="#资源拥有密码模式（Resource-Owner-Password-Credentials）" class="headerlink" title="资源拥有密码模式（Resource Owner Password Credentials）"></a>资源拥有密码模式（Resource Owner Password Credentials）</h3><h3 id="使用令牌调用接口"><a href="#使用令牌调用接口" class="headerlink" title="使用令牌调用接口"></a>使用令牌调用接口</h3><h3 id="令牌有效期说明"><a href="#令牌有效期说明" class="headerlink" title="令牌有效期说明"></a>令牌有效期说明</h3><h3 id="刷新令牌"><a href="#刷新令牌" class="headerlink" title="刷新令牌"></a>刷新令牌</h3><h2 id="限流策略"><a href="#限流策略" class="headerlink" title="限流策略"></a>限流策略</h2><h3 id="流控算法"><a href="#流控算法" class="headerlink" title="流控算法"></a>流控算法</h3><h3 id="IP限制"><a href="#IP限制" class="headerlink" title="IP限制"></a>IP限制</h3><h2 id="隐私政策模板"><a href="#隐私政策模板" class="headerlink" title="隐私政策模板"></a>隐私政策模板</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h2 id="疫情防控"><a href="#疫情防控" class="headerlink" title="疫情防控"></a>疫情防控</h2><h3 id="大数据局核酸采样接口"><a href="#大数据局核酸采样接口" class="headerlink" title="大数据局核酸采样接口"></a>大数据局核酸采样接口</h3><p>反对JFK设计开发的时刻<br>附近的收费的花费巨大<br>33333<br>大家圣诞节圣诞节是大家撒旦吉萨撒大大的撒</p>
+<p>反对JFK设计开发的时刻<br>附近的收费的花费巨大<br>33333<br>大家圣诞节圣诞节是大家撒旦吉萨撒大大的撒</p>
 
       
     </div>
@@ -414,7 +414,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">John Doe</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
 
         
@@ -440,7 +440,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
